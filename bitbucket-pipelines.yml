@@ -1,0 +1,29 @@
+image: node:16.20.2
+
+pipelines:
+  branches:
+    production:
+      - step:
+          name: Deploy to Firebase
+          deployment: production
+          script:
+            - npm install --force
+            - npm run build-prod
+            - pipe: atlassian/firebase-deploy:5.1.1
+              variables:
+                KEY_FILE: '<string>'
+                FIREBASE_TOKEN: '<string>'
+                PROJECT_ID: 'hoopr-select-production'
+                MESSAGE: '$BITBUCKET_COMMIT'
+    staging:
+      - step:
+          name: Deploy to Firebase
+          deployment: staging
+          script:
+            - npm install --force
+            - npm run build-staging
+            - pipe: atlassian/firebase-deploy:5.1.1
+              variables:
+                FIREBASE_TOKEN: $FIREBASE_TOKEN
+                PROJECT_ID: 'hoopr-select-staging'
+                MESSAGE: '$BITBUCKET_COMMIT'                

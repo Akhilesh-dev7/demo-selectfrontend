@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "default": "hoopr-select-staging",
+    "staging": "hoopr-select-staging",
+    "production": "hoopr-select-production"
+  }
+}
