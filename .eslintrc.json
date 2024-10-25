@@ -1,6 +1,6 @@
 {
   "root": true,
-  "ignorePatterns": [
+  "ignorePatternss": [
     "projects/**/*"
   ],
   "overrides": [
